@@ -1,4 +1,4 @@
-package com.example.dombi.checkin_app;
+package com.ak47.checkin_app;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -28,6 +28,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.ak47.checkin_app.R;
 
 import java.util.ArrayList;
 import java.util.List;

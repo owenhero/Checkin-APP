@@ -1,4 +1,4 @@
-package com.example.dombi.checkin_app;
+package com.ak47.checkin_app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.ak47.checkin_app.R;
 
 /**
  * Created by Dombi on 2015/11/2.

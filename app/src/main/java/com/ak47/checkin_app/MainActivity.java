@@ -1,4 +1,4 @@
-package com.example.dombi.checkin_app;
+package com.ak47.checkin_app;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
+import com.example.ak47.checkin_app.R;
 
 public class MainActivity extends AppCompatActivity  {
 
