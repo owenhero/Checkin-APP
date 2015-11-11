@@ -1,8 +1,15 @@
-package com.ak47.checkin_app;
+﻿package com.ak47.checkin_app;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -26,11 +33,17 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ak47.checkin_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.LogInListener;
+import cn.bmob.v3.listener.SaveListener;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -48,9 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -61,11 +72,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
+//  SharedPreferences 用来保存数据
+    private SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Bmob.initialize(this, "4586dc03db7496fc6e6ce6f26745b5e9");
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -180,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
-            focusView.requestFocus();
+            focusView.requestFocus();//重新请求焦点
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
@@ -192,6 +205,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
+
         return email.contains("@");
     }
 
@@ -308,22 +322,55 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
+/*            try {
                 // Simulate network access.
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
-            }
+            }*/
 
-            for (String credential : DUMMY_CREDENTIALS) {
+            /*for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
+            }*/
+          /*  //如果已经登陆,返回true
+            String id = sp.getString("ID", null);
+            if(!TextUtils.isEmpty(id)) {
+                Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                return true;
             }
+*/
+            //如果没有登陆的话，就注册一个
 
             // TODO: register the new account here.
+            //保存账户密码到SharePreferences,模拟服务器数据
+            /*sp = getSharedPreferences("user",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("ID",mEmail);
+            editor.putString("password",mPassword);
+            editor.commit();
+            Toast.makeText(LoginActivity.this,"注册成功",Toast.LENGTH_SHORT).show();*/
+            BmobUser user = new BmobUser();
+            user.setUsername("sdsad");
+            user.setPassword(mPassword);
+            user.setEmail(mEmail);
+//注意：不能用save方法进行注册
+            user.signUp(LoginActivity.this, new SaveListener() {
+                @Override
+                public void onSuccess() {
+                    // TODO Auto-generated method stub
+                    Toast.makeText(LoginActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(int code, String msg) {
+                    // TODO Auto-generated method stub
+                    Toast.makeText(LoginActivity.this, "注册失败！", Toast.LENGTH_SHORT).show();
+                }
+            });
             return true;
         }
 
@@ -333,7 +380,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+
+                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
