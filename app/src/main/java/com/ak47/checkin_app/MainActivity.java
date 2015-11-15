@@ -1,6 +1,7 @@
 package com.ak47.checkin_app;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -35,6 +36,8 @@ import android.widget.Toast;
 
 import com.example.ak47.checkin_app.R;
 
+import cn.bmob.v3.BmobUser;
+
 public class MainActivity extends AppCompatActivity  {
 
     /**
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity  {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private SharedPreferences sp;
+
 
 
     @Override
@@ -62,10 +65,10 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //判断是否登录
-        if(noLogin()){
+/*        if(noLogin(this)){
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
             Toast.makeText(this,"请登录",Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -203,20 +206,7 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    /*这是判断是否有登陆的函数
-    * 使用了SharePreferences来存取数据
-    *
-    * */
-    private boolean noLogin(){
-        sp = getSharedPreferences("user",MODE_PRIVATE);
 
-        String id = sp.getString("ID","");
-        Log.i(MainActivity.class.getSimpleName(),id);
-        return TextUtils.isEmpty(id);
 
-    }
-    /*
-    *判断是否使用过
-    */
 
 }
