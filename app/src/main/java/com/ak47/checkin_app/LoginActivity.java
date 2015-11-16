@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -39,12 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.LogInListener;
-import cn.bmob.v3.listener.SaveListener;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -58,10 +53,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -73,7 +64,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +74,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
-        //判断有没有登陆
-//        if (noLogin()) {
-//            startActivity(new Intent(this,MainActivity.class));
-//        }
-//        // Set up the login form.
+
+        /*判断有没有登陆
+        * isLogin返回值：ture：  已经登陆
+        *               flase: 没有登陆*/
+        if (isLogin()) {
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        }
+        // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -111,9 +105,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
 
 
     }
@@ -221,7 +212,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         // TODO 登陆成功进入主界面
                         if (user != null) {
                             Log.i("smile", "用户登陆成功");
+                            toast("用户登录成功");
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            finish();
                         }
                     }
                 });
@@ -235,7 +228,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         // TODO 登录成功进入主界面
                         if(user!=null){
                             Log.i("smile","用户登陆成功");
+                            toast("用户登录成功");
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         }
                     }
                 });
@@ -356,7 +351,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     /**
-     * 登录线程
+     * 登录线程  暂时弃用
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -372,28 +367,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
 
-/*
-            BmobUser bu2 = new BmobUser();
-            bu2.setMobilePhoneNumber(mID);
-            bu2.setPassword(mPassword);
-            bu2.login(LoginActivity.this, new SaveListener() {
-                @Override
-                public void onSuccess() {
-                    // TODO Auto-generated method stub
-                    flag = true;
-                    toast("登录成功:");
-                }
-
-                @Override
-                public void onFailure(int code, String msg) {
-                    // TODO Auto-generated method stub
-                    Log.i("tag:","这里有输出");
-                    flag = false;
-                    toast("登录失败:" + msg);
-                }
-            });
-*/
-            return flag;
+            return true;
         }
 
         @Override
@@ -423,7 +397,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     * 返回值：true，说明已经登陆
     *       false，说明还没登陆
     * */
-    private boolean noLogin(){
+    private boolean isLogin(){
 
         MyUser mUser = (MyUser) MyUser.getCurrentUser(LoginActivity.this);
         if(mUser != null){
