@@ -29,6 +29,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
@@ -78,10 +80,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         /*判断有没有登陆
         * isLogin返回值：ture：  已经登陆
         *               flase: 没有登陆*/
-        if (isLogin()) {
+/*        if (isLogin()) {
             startActivity(new Intent(this,MainActivity.class));
             finish();
-        }
+        }*/
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -105,9 +107,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
+        TextView tvRegister = (TextView) findViewById(R.id.tv_register);
+        tvRegister.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startRegister();
+            }
+        });
 
 
     }
+
+    private void startRegister() {
+        startActivity(new Intent(this,RegisterActivity.class));
+    }
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
@@ -330,6 +344,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -399,8 +414,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     * */
     private boolean isLogin(){
 
-        MyUser mUser = (MyUser) MyUser.getCurrentUser(LoginActivity.this);
-        if(mUser != null){
+        BmobUser bmobUser = BmobUser.getCurrentUser(LoginActivity.this);
+        if(bmobUser != null){
             // 说明已经登录，允许用户使用应用
             Log.i("smile","用户已经登陆，进入主界面。。。");
             return true;
