@@ -11,14 +11,39 @@
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_email">用户名不合法</string>
+    <string name="error_invalid_password">密码过短</string>
+    <string name="error_incorrect_password">密码错误</string>
+    <string name="error_field_required">用户名不能为空</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
 
+    <!--String relate to register -->
+    <string name="login_account_email">邮箱：</string>
+    <string name="login_account_phone">手机</string>
+    <string name="login_account_password">密码：</string>
+    <string name="login_username_hint_email">请输入你的邮箱</string>
+    <string name="login_username_hint_phone">请输入你的手机号码</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_password2_hint">请再次输入密码</string>
+    <string name="bn_register">点击注册</string>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--相机                          -->
+    <string name="hello_world">Hello world!</string>
+    <string name="start_image_capture">Take New Picture!</string>
+    <string name="capture_image">Snap It!</string>
+    <string name="save_image">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="swap_camera">Swap</string>
+    <string name="flash">Flash</string>
+    <string name="auto_flash">Auto Flash</string>
+    <string name="no_flash">No Flash</string>
+    <string name="recapture_image">Retake Picture</string>
+    <string name="capturing_image">Taking New Picture</string>
+    <string name="done">Done</string>
+    <string name="title_activity_blank">BlankActivity</string>
 </resources>

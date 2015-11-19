@@ -1,18 +1,29 @@
 package com.ak47.checkin_app;
 
 import android.content.Intent;
+
+import android.content.Context;
+import android.os.Bundle;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +31,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import android.widget.Button;
+
+import android.widget.Toast;
+
+
 import com.example.ak47.checkin_app.R;
+
+import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -33,16 +51,26 @@ public class MainActivity extends AppCompatActivity  {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private Button bnTakePhoto;
+//    private CoordinatorLayout coordinatorLayout;
+//    private RelativeLayout fgMain;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //判断是否登录
+/*        if(noLogin(this)){
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            Toast.makeText(this,"请登录",Toast.LENGTH_SHORT).show();
+        }*/
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,6 +81,11 @@ public class MainActivity extends AppCompatActivity  {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+//        fgMain = (RelativeLayout) mViewPager.findViewById(R.id.fgMain);
+//        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
+
+//        bnTakePhoto = (Button) fgMain.findViewById(R.id.bnTakePhoto);
+//        Log.i(MainActivity.class.getSimpleName(), "我的button是" + bnTakePhoto.toString());
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -62,11 +95,34 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)   //Snackbar是一个屏幕下端的弹窗
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                            }
+                        }).show();
             }
         });
 
+
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("show:","暂停了！");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("show:", "停止了！");
+    }
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
 
 
     @Override
@@ -106,7 +162,8 @@ public class MainActivity extends AppCompatActivity  {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new PlaceholderFragment();
+//                    return new PlaceholderFragment();
+                    return new MainFragment();
                 case 1:
                     return new ExploreFragment();
                 case 2:
@@ -148,36 +205,10 @@ public class MainActivity extends AppCompatActivity  {
 
             return inflater.inflate(R.layout.fragment_main, container, false);
         }
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        //private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        /*public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }*/
-
-/*
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-*/
     }
+
+
+
+
 }

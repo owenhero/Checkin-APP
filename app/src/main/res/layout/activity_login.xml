@@ -7,55 +7,64 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ak47.checkin_app.LoginActivity">
 
-    <!-- Login progress -->
-    <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" android:visibility="gone" />
+    <LinearLayout android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
-
-            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView android:id="@+id/email" android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="请输入账号（公司id/手机号/用户名）"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText android:id="@+id/password" android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="密码（8位以上字母数字下划线组合）"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                    android:maxLines="1" android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="注册/登陆"
-                android:textStyle="bold" />
-
-            <Button
+            <AutoCompleteTextView android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="忘记密码"
-                android:textColor="@color/colorTips"
-                android:id="@+id/button"
-                android:layout_gravity="center_horizontal" />
+                android:hint="请输入账号（公司id/手机号/用户名）"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-        </LinearLayout>
-    </ScrollView>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码（8位以上字母数字下划线组合）"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified" android:inputType="textPassword"
+                android:maxLines="1" android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="登陆"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:textSize="20sp"
+            android:text="没有账号？点击注册" />
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="忘记密码？"
+            android:textSize="20sp"
+            android:gravity="bottom|right"/>
+    </LinearLayout>
 </LinearLayout>
