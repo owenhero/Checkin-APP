@@ -19,6 +19,8 @@ public class MainFragment extends Fragment{
     private View view;
     private Button bnTakePhoto;
     private Button bnTakeMedia;
+    private Button bnGetLocation;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,6 +39,14 @@ public class MainFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MediaActivity.class);
+                startActivity(intent);
+            }
+        });
+        bnGetLocation = (Button)view.findViewById(R.id.bn_get_locatoin);
+        bnGetLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),MapMainActivity.class);
                 startActivity(intent);
             }
         });
