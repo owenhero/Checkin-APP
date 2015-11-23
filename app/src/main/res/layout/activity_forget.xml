@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ak47.checkin_app.forgetpassword.ForgetAcitvity"
+    android:orientation="vertical"
+    android:gravity="top|center">
+    <RadioGroup
+        android:id="@+id/rgResect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="手机重置"
+            android:id="@+id/rbPhone"
+            android:checked="true"
+            android:button="@null"
+            android:background="@drawable/bn_radio"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="邮箱重置"
+            android:id="@+id/rbEmail"
+            android:button="@null"
+            android:background="@drawable/bn_radio"
+            android:checked="false" />
+    </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/fragment_forget_conver">
+
+    </LinearLayout>
+
+</LinearLayout>
