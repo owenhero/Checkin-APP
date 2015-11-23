@@ -66,11 +66,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //判断是否登录
-/*        if(noLogin(this)){
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            Toast.makeText(this,"请登录",Toast.LENGTH_SHORT).show();
-        }*/
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -106,6 +102,8 @@ public class MainActivity extends AppCompatActivity  {
 
 
     }
+
+
 
     @Override
     protected void onPause() {

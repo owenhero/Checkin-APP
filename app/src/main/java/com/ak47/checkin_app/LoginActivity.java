@@ -80,10 +80,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         /*判断有没有登陆
         * isLogin返回值：ture：  已经登陆
         *               flase: 没有登陆*/
-/*        if (isLogin()) {
+        if (isLogin()) {
             startActivity(new Intent(this,MainActivity.class));
             finish();
-        }*/
+        }
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -414,8 +414,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     * */
     private boolean isLogin(){
 
-        BmobUser bmobUser = BmobUser.getCurrentUser(LoginActivity.this);
-        if(bmobUser != null){
+        MyUser myUser = BmobUser.getCurrentUser(LoginActivity.this,MyUser.class);
+        if(myUser != null){
             // 说明已经登录，允许用户使用应用
             Log.i("smile","用户已经登陆，进入主界面。。。");
             return true;

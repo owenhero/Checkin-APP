@@ -43,4 +43,6 @@ captures/
 /build
 .idea/
 *.iml
+.idea/
 
+app/app.iml
