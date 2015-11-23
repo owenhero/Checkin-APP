@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 //import com.desmond.squarecamera.R;
 

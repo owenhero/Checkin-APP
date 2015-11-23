@@ -36,7 +36,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 import cn.bmob.v3.BmobUser;
 
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity  {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity  {
                         }).show();
             }
         });
+*/
 
 
     }

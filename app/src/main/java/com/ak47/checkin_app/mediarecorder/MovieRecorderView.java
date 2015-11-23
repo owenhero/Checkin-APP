@@ -20,7 +20,7 @@ import android.view.SurfaceView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 import com.lidroid.xutils.util.LogUtils;
 
 import java.io.File;

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 

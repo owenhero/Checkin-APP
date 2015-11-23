@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;

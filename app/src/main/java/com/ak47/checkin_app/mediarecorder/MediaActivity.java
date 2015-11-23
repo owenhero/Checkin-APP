@@ -15,7 +15,7 @@ import com.ak47.checkin_app.mediarecorder.MovieRecorderView.OnRecordFinishListen
 import com.bmob.BTPFileResponse;
 import com.bmob.BmobProFile;
 import com.bmob.btp.callback.UploadListener;
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 import cn.bmob.v3.datatype.BmobFile;
 

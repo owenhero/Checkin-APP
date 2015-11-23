@@ -14,7 +14,7 @@ import android.util.Base64;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

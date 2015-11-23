@@ -55,6 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="11pt"
-        android:textColor="@color/bn_green"
+        android:textColor="@color/bn_blue"
         android:text="一键登录"/>
 </LinearLayout>

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 //import com.desmond.squarecamera.R;
 

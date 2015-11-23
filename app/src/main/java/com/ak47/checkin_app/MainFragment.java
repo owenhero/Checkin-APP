@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.ak47.checkin_app.camera.CameraActivity;
 import com.ak47.checkin_app.mediarecorder.MediaActivity;
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 /**
  * Created by owen on 2015/11/10.

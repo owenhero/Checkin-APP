@@ -25,7 +25,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 import java.io.IOException;
 import java.util.List;

@@ -26,7 +26,7 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 public class MapMainActivity extends Activity {
     private LinearLayout mapLayout;

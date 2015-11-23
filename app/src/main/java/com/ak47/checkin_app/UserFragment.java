@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.R;
 
 /**
  * Created by Dombi on 2015/11/2.

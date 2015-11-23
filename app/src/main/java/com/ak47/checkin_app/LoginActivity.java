@@ -29,11 +29,11 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ak47.checkin_app.R;
+import com.ak47.checkin_app.forgetpassword.ForgetAcitvity;
+import com.ak47.checkin_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private TextView tvForgetPassword;
+    private TextView tvRegister;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -107,11 +109,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-        TextView tvRegister = (TextView) findViewById(R.id.tv_register);
+        tvRegister = (TextView) findViewById(R.id.tv_register);
         tvRegister.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startRegister();
+            }
+        });
+        tvForgetPassword = (TextView) findViewById(R.id.tv_forget_password);
+        tvForgetPassword.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgetAcitvity.class));
             }
         });
 

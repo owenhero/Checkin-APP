@@ -4,8 +4,17 @@
     tools:context="com.ak47.checkin_app.ExploreFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:id="@+id/bn_test"
+        android:layout_gravity="right|top" />
+
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
         android:text="这是探索界面！木有福利！"
-        android:id="@+id/tvExplorePageHello" />
+        android:id="@+id/tvExplorePageHello"
+        android:layout_gravity="center_horizontal|top" />
 
 </FrameLayout>
