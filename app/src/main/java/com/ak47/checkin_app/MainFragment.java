@@ -42,6 +42,7 @@ public class MainFragment extends Fragment{
                 startActivity(intent);
             }
         });
+
         bnGetLocation = (Button)view.findViewById(R.id.bn_get_locatoin);
         bnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
