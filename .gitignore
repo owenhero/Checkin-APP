@@ -34,5 +34,13 @@ proguard/
 
 captures/
 
+#.idea文件夹下部分不应该被控制的文件
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+.idea/
 *.iml
 
