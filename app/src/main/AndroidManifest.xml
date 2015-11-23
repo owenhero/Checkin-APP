@@ -52,7 +52,6 @@
             android:label="移动签到">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -65,8 +64,8 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="jgRZwp2lE356Sv3poOvGIK3Y" />
-        //key:开发者申请的key
+            android:value="rOIdyrFkYTc7Gj91s5i1xf72" /><!--key:开发者申请的key -->
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -77,4 +76,12 @@
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" >
+    </uses-permission>
 </manifest>

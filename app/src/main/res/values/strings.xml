@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Checkin-App</string>
+    <string name="app_name">移动签到</string>
     <string name="title_activity_table">TableActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

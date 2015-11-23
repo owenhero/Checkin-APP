@@ -42,5 +42,6 @@ captures/
 .DS_Store
 /build
 .idea/
+<<<<<<< HEAD
 #*.iml
 

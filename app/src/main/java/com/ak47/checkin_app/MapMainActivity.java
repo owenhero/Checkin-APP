@@ -47,16 +47,8 @@ public class MapMainActivity extends Activity {
         SDKInitializer.initialize(getApplicationContext()); //初始化地图sdk
         mapLayout = (LinearLayout) findViewById(R.id.map);
         initMap();
-        //点击按钮手动请求定位
-        Button btn = (Button) findViewById(R.id.request);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestLocation();
-            }
-        });
-
     }
+
     private void initMap() {
         BaiduMapOptions options = new BaiduMapOptions();
         options.compassEnabled(false); // 允许指南针
@@ -82,7 +74,7 @@ public class MapMainActivity extends Activity {
     public class MyLocationListenner implements BDLocationListener {  //定位
 
         @Override
-        public void onReceiveLocation(BDLocation location) {
+        public void onReceiveLocation(final BDLocation location) {
 //定位
             if (location == null || mMapView == null)
                 return;
@@ -92,15 +84,30 @@ public class MapMainActivity extends Activity {
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
             if (isFirstLoc) {
-//定位成功
+                //定位成功
                 showLocation(location);
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                 mBaiduMap.animateMapStatus(u);
-            }
 
+                //点击按钮手动请求定位
+                Button btn = (Button) findViewById(R.id.request);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isRequest = true;
+                        mLocClient.start();
+                        LatLng ll = new LatLng(location.getLatitude(),
+                                location.getLongitude());
+                        MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
+                        mBaiduMap.animateMapStatus(u);
+                        showLocation(location);
+                    }
+                });
+
+            }
         }
 
         public void onReceivePoi(BDLocation poiLocation) {
@@ -118,25 +125,10 @@ public class MapMainActivity extends Activity {
 
         mInfoWindow = new InfoWindow(view, pt,null);
         mBaiduMap.showInfoWindow(mInfoWindow); //显示气泡
+        Toast.makeText(MapMainActivity.this, "定位成功",Toast.LENGTH_SHORT).show();
+
 
     }
-
-    /**
-     * 手动请求定位的方法
-     */
-    public void requestLocation() {
-        isRequest = true;
-        mLocClient.start();
-
-        if(mLocClient != null && mLocClient.isStarted()){
-            Toast.makeText(MapMainActivity.this,"正在定位......",Toast.LENGTH_SHORT).show();
-            mLocClient.requestLocation();
-//            showLocation(BDLocation location);
-        }else{
-            Log.d("LocSDK3", "locClient is null or not started");
-        }
-    }
-
 
     @Override
     protected void onDestroy() {
