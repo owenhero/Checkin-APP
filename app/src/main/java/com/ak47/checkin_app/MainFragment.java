@@ -40,6 +40,14 @@ public class MainFragment extends Fragment{
                 startActivity(intent);
             }
         });
+        Button btnloc = (Button) view.findViewById(R.id.bnGps);
+        btnloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapMainActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }
