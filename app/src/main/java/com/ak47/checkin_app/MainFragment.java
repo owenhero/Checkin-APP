@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ak47.checkin_app.camera.CameraActivity;
 import com.ak47.checkin_app.mediarecorder.MediaActivity;
@@ -48,9 +50,39 @@ public class MainFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),MapMainActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                startActivityForResult(intent, 1);
+
             }
         });
         return view;
+    }
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK){
+                    String returndata = data.getStringExtra("LOCDATA");
+                    TextView textView = (TextView) findViewById(R.id.textView);
+                    textView.setText(returndata);
+                }
+                break;
+            default:
+        }
+    }*/
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if(resultCode == 11){
+                    String returndata = data.getStringExtra("LOCDATA");
+                    TextView textView = (TextView)view.findViewById(R.id.textView);
+                    textView.setText(returndata);
+                }
+                break;
+            default:
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.ak47.checkin_app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,7 +67,7 @@ public class MapMainActivity extends Activity {
         option.setOpenGps(true);
         option.setAddrType("all"); //设置使其可以获取具体的位置，把精度纬度换成具体地址
         option.setCoorType("bd09ll");
-        option.setScanSpan(1000);
+        option.setScanSpan(500);
         mLocClient.setLocOption(option);
         mLocClient.start();  //开始定位
     }
@@ -85,7 +86,7 @@ public class MapMainActivity extends Activity {
             mBaiduMap.setMyLocationData(locData);
             if (isFirstLoc) {
                 //定位成功
-                showLocation(location);
+//                showLocation(location);
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
@@ -104,6 +105,11 @@ public class MapMainActivity extends Activity {
                         MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                         mBaiduMap.animateMapStatus(u);
                         showLocation(location);
+
+                        Intent intent = new Intent();
+                        intent.putExtra("LOCDATA", location.getAddrStr());
+                        setResult(11, intent);
+
                     }
                 });
 
@@ -125,11 +131,16 @@ public class MapMainActivity extends Activity {
 
         mInfoWindow = new InfoWindow(view, pt,null);
         mBaiduMap.showInfoWindow(mInfoWindow); //显示气泡
-        Toast.makeText(MapMainActivity.this, "定位成功",Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(MapMainActivity.this, "定位成功,请返回",Toast.LENGTH_SHORT).show();
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        mLocClient.stop();
+        finish();
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
