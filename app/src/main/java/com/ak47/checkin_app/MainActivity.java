@@ -77,11 +77,6 @@ public class MainActivity extends AppCompatActivity  {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-//        fgMain = (RelativeLayout) mViewPager.findViewById(R.id.fgMain);
-//        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
-
-//        bnTakePhoto = (Button) fgMain.findViewById(R.id.bnTakePhoto);
-//        Log.i(MainActivity.class.getSimpleName(), "我的button是" + bnTakePhoto.toString());
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);

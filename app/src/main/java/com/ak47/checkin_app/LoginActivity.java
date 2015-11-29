@@ -15,7 +15,6 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+//    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -74,18 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Bmob.initialize(this, "9d4fc7d5415a8eda63b164d99974602f");
 
-
-
-
-        /*判断有没有登陆
-        * isLogin返回值：ture：  已经登陆
-        *               flase: 没有登陆*/
-        if (isLogin()) {
-            startActivity(new Intent(this,MainActivity.class));
-            finish();
-        }
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -182,9 +170,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
+/*        if (mAuthTask != null) {
             return;
-        }
+        }*/
 
         // Reset errors.
         mEmailView.setError(null);
@@ -361,7 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
+
     }
 
 
@@ -374,66 +362,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-    /**
-     * 登录线程  暂时弃用
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mID;
-        private final String mPassword;
-
-
-        UserLoginTask(String email, String password) {
-            mID = email;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-            if (success) {
-
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
-    }
     //Toast显示
     private void toast(String s) {
         Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
         }
 
-    /*判断有没有登陆
-    * 返回值：true，说明已经登陆
-    *       false，说明还没登陆
-    * */
-    private boolean isLogin(){
-
-        MyUser myUser = BmobUser.getCurrentUser(LoginActivity.this,MyUser.class);
-        if(myUser != null){
-            // 说明已经登录，允许用户使用应用
-            Log.i("smile","用户已经登陆，进入主界面。。。");
-            return true;
-        }else{
-            //缓存用户对象为空时， 说明没有登陆，可打开用户登陆注册界面…
-            Log.i("smile","没有查询到缓存用户对象，留在登陆界面。。。");
-            return false;
-        }
-
-    }
 }
 
