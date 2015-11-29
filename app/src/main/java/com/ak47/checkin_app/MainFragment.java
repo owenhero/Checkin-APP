@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.ak47.checkin_app.camera.CameraActivity;
 import com.ak47.checkin_app.mediarecorder.MediaActivity;
-import com.ak47.checkin_app.R;
 
 /**
  * Created by owen on 2015/11/10.
@@ -43,7 +42,7 @@ public class MainFragment extends Fragment{
             }
         });
 
-        bnGetLocation = (Button)view.findViewById(R.id.bn_get_locatoin);
+        bnGetLocation = (Button)view.findViewById(R.id.bn_get_location);
         bnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
