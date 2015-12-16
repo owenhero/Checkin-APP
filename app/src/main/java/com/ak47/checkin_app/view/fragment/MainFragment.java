@@ -1,4 +1,4 @@
-package com.ak47.checkin_app;
+package com.ak47.checkin_app.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.ak47.checkin_app.R;
 import com.ak47.checkin_app.camera.CameraActivity;
 import com.ak47.checkin_app.mediarecorder.MediaActivity;
+import com.ak47.checkin_app.view.activity.MapMainActivity;
 
 /**
  * Created by owen on 2015/11/10.

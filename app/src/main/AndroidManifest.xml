@@ -48,7 +48,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".InitActivity"
+            android:name=".view.activity.InitActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,16 +61,21 @@
             android:label="移动签到"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.activity.LoginActivity"
             android:label="移动签到">
 
         </activity>
         <activity android:name=".camera.CameraActivity" />
         <activity android:name=".mediarecorder.MediaActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".RegisterPhone" />
         <activity android:name=".RegisterEmail" />
-        <activity android:name=".MapMainActivity" />
+        <activity android:name=".view.activity.MapMainActivity" />
+        <activity android:name=".view.BaseActivity"/>
+        <activity android:name=".view.activity.PublicActivity"/>
+        <activity android:name=".UserInfo"/>
+        <activity android:name=".view.activity.UserActivity"/>
+        <activity android:name=".view.activity.SettingActivity"/>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

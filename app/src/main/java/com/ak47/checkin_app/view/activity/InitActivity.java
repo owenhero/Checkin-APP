@@ -1,9 +1,13 @@
-package com.ak47.checkin_app;
+package com.ak47.checkin_app.view.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.ak47.checkin_app.MainActivity;
+import com.ak47.checkin_app.MyUser;
+import com.ak47.checkin_app.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,4 +1,4 @@
-package com.ak47.checkin_app;
+package com.ak47.checkin_app.view.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ak47.checkin_app.R;
+import com.ak47.checkin_app.RegisterEmail;
+import com.ak47.checkin_app.RegisterPhone;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 

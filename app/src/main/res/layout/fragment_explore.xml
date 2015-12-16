@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ak47.checkin_app.ExploreFragment">
+    tools:context=".view.fragment.ExploreFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
