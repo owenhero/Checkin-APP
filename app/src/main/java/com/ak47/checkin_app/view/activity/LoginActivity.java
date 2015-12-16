@@ -1,4 +1,4 @@
-package com.ak47.checkin_app;
+package com.ak47.checkin_app.view.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,14 +31,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ak47.checkin_app.MainActivity;
+import com.ak47.checkin_app.MyUser;
 import com.ak47.checkin_app.forgetpassword.ForgetAcitvity;
 import com.ak47.checkin_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 
